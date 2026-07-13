@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes — Plankti</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">plankti.dev</span>
+    <div class="nav-links">
+      <a href="index.html">home</a>
+      <a href="work.html">work</a>
+      <a href="notes.html" class="active">notes</a>
+      <a href="downloads.html">downloads</a>
+      <a href="links.html">links</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <div class="page-eyebrow">// houdini notes &amp; technical write-ups</div>
+      <div class="page-title">Notes</div>
+    </div>
+
+    <div class="filter-row" id="filter-row">
+      <button class="filter-pill active" data-tag="all">all</button>
+      <button class="filter-pill" data-tag="vex">vex</button>
+      <button class="filter-pill" data-tag="houdini">houdini</button>
+      <button class="filter-pill" data-tag="hdk">hdk</button>
+      <button class="filter-pill" data-tag="pipeline">pipeline</button>
+    </div>
+
+    <div class="notes-grid" id="notes-grid">
+      <div class="note-row" data-tag="houdini">
+        <span class="note-date">2026.06.10</span>
+        <a href="notes/sweep-sop-twist-fix.html" class="note-title">Fixing twist artifacts on the Sweep SOP</a>
+        <span class="note-tag">houdini</span>
+      </div>
+      <div class="note-row" data-tag="vex">
+        <span class="note-date">2026.05.28</span>
+        <a href="#" class="note-title">Plane-plane distance and signed point-to-plane math</a>
+        <span class="note-tag">vex</span>
+      </div>
+      <div class="note-row" data-tag="hdk">
+        <span class="note-date">2026.05.12</span>
+        <a href="#" class="note-title">Writing your first custom SOP with the HDK</a>
+        <span class="note-tag">hdk</span>
+      </div>
+      <div class="note-row" data-tag="houdini">
+        <span class="note-date">2026.04.30</span>
+        <a href="#" class="note-title">SOP verbs, APEX graphs, and Houdini's cooking model</a>
+        <span class="note-tag">houdini</span>
+      </div>
+      <div class="note-row" data-tag="pipeline">
+        <span class="note-date">2026.04.15</span>
+        <a href="#" class="note-title">Polycam and photogrammetry in a VFX pipeline</a>
+        <span class="note-tag">pipeline</span>
+      </div>
+      <div class="note-row" data-tag="vex">
+        <span class="note-date">2026.03.22</span>
+        <a href="#" class="note-title">Point movement along direction vectors in VEX</a>
+        <span class="note-tag">vex</span>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>plankti.dev</span>
+    <span>built with html · hosted on github pages</span>
+  </footer>
+
+  <script>
+    const pills = document.querySelectorAll('.filter-pill');
+    const rows = document.querySelectorAll('.note-row');
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const tag = pill.dataset.tag;
+        rows.forEach(row => {
+          if (tag === 'all' || row.dataset.tag === tag) {
+            row.classList.remove('is-hidden');
+          } else {
+            row.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

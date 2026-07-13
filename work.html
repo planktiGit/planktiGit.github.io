@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — Plankti</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">plankti.dev</span>
+    <div class="nav-links">
+      <a href="index.html">home</a>
+      <a href="work.html" class="active">work</a>
+      <a href="notes.html">notes</a>
+      <a href="downloads.html">downloads</a>
+      <a href="links.html">links</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <div class="page-eyebrow">// selected work</div>
+      <div class="page-title">Portfolio</div>
+    </div>
+
+    <div class="filter-row" id="filter-row">
+      <button class="filter-pill active" data-tag="all">all</button>
+      <button class="filter-pill" data-tag="fx">fx</button>
+      <button class="filter-pill" data-tag="tools">tools</button>
+      <button class="filter-pill" data-tag="lookdev">lookdev</button>
+      <button class="filter-pill" data-tag="personal">personal</button>
+    </div>
+
+    <div class="proj-grid" id="proj-grid">
+
+      <div class="proj-card featured" data-tag="fx tools personal">
+        <a href="work/erosion-system.html">
+          <div class="proj-thumb">
+            <svg viewBox="0 0 1200 514" preserveAspectRatio="xMidYMid slice">
+              <rect width="1200" height="514" fill="#1a1b16"/>
+              <defs>
+                <pattern id="gridA" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M40 0 L0 0 0 40" fill="none" stroke="#2e2e26" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="1200" height="514" fill="url(#gridA)"/>
+              <path d="M0 460 L120 380 L240 420 L360 300 L480 350 L600 220 L720 280 L840 180 L960 240 L1080 150 L1200 200 L1200 514 L0 514 Z" fill="#F2C230" opacity="0.18"/>
+              <path d="M0 460 L120 380 L240 420 L360 300 L480 350 L600 220 L720 280 L840 180 L960 240 L1080 150 L1200 200" fill="none" stroke="#F2C230" stroke-width="2"/>
+              <text x="40" y="60" font-family="JetBrains Mono, monospace" font-size="13" fill="#7a7870" letter-spacing="2">EROSION_SIM_v04</text>
+            </svg>
+          </div>
+        </a>
+        <div class="proj-body">
+          <div class="proj-type">personal — fx / tools</div>
+          <div class="proj-name"><a href="work/erosion-system.html" style="color:inherit">Procedural erosion system</a></div>
+          <div class="proj-desc">A fully procedural terrain erosion solver built in VEX, simulating sediment transport across arbitrary heightfields with custom HDA controls for art direction.</div>
+          <div class="proj-meta">
+            <span>2026 · houdini, vex, hdk</span>
+            <a href="work/erosion-system.html" style="color:var(--accent)">→ view breakdown</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-tag="fx">
+        <div class="proj-thumb">
+          <svg viewBox="0 0 600 375" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="375" fill="#1a1b16"/>
+            <defs>
+              <pattern id="gridB" width="30" height="30" patternUnits="userSpaceOnUse">
+                <path d="M30 0 L0 0 0 30" fill="none" stroke="#2e2e26" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="600" height="375" fill="url(#gridB)"/>
+            <g stroke="#F2C230" stroke-width="1.5" fill="none" opacity="0.85">
+              <polygon points="300,90 380,150 350,240 250,240 220,150"/>
+              <line x1="300" y1="90" x2="300" y2="187"/>
+              <line x1="380" y1="150" x2="300" y2="187"/>
+              <line x1="350" y1="240" x2="300" y2="187"/>
+              <line x1="250" y1="240" x2="300" y2="187"/>
+              <line x1="220" y1="150" x2="300" y2="187"/>
+            </g>
+            <text x="30" y="345" font-family="JetBrains Mono, monospace" font-size="11" fill="#7a7870" letter-spacing="1.5">RBD_FRACTURE</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-type">studio — fx</div>
+          <div class="proj-name">Creature destruction rig</div>
+          <div class="proj-desc">RBD fracture and muscle-driven secondary motion for a commercial creature shot.</div>
+          <div class="proj-meta">
+            <span>2025 · houdini</span>
+            <span>→</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-tag="tools">
+        <div class="proj-thumb">
+          <svg viewBox="0 0 600 375" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="375" fill="#1a1b16"/>
+            <defs>
+              <pattern id="gridC" width="30" height="30" patternUnits="userSpaceOnUse">
+                <path d="M30 0 L0 0 0 30" fill="none" stroke="#2e2e26" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="600" height="375" fill="url(#gridC)"/>
+            <g fill="#F2C230">
+              <circle cx="170" cy="150" r="5" opacity="0.9"/>
+              <circle cx="230" cy="200" r="4" opacity="0.7"/>
+              <circle cx="300" cy="130" r="6" opacity="0.9"/>
+              <circle cx="360" cy="220" r="3" opacity="0.6"/>
+              <circle cx="410" cy="160" r="5" opacity="0.85"/>
+              <circle cx="250" cy="260" r="4" opacity="0.7"/>
+              <circle cx="450" cy="240" r="4" opacity="0.7"/>
+              <circle cx="200" cy="100" r="3" opacity="0.6"/>
+              <circle cx="330" cy="280" r="5" opacity="0.85"/>
+            </g>
+            <text x="30" y="345" font-family="JetBrains Mono, monospace" font-size="11" fill="#7a7870" letter-spacing="1.5">SCATTER_HDA</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-type">tool — hda</div>
+          <div class="proj-name">Context-aware scatter HDA</div>
+          <div class="proj-desc">Custom scatter tool that reads surface normals and curvature to drive density and rotation.</div>
+          <div class="proj-meta">
+            <span>2025 · hdk, c++</span>
+            <span>→</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-tag="lookdev">
+        <div class="proj-thumb">
+          <svg viewBox="0 0 600 375" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="375" fill="#1a1b16"/>
+            <defs>
+              <radialGradient id="sphereGrad" cx="40%" cy="35%" r="65%">
+                <stop offset="0%" stop-color="#3a2a1a"/>
+                <stop offset="100%" stop-color="#1a1b16"/>
+              </radialGradient>
+              <pattern id="gridD" width="30" height="30" patternUnits="userSpaceOnUse">
+                <path d="M30 0 L0 0 0 30" fill="none" stroke="#2e2e26" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="600" height="375" fill="url(#gridD)"/>
+            <circle cx="300" cy="180" r="90" fill="url(#sphereGrad)" stroke="#F2C230" stroke-width="1"/>
+            <text x="30" y="345" font-family="JetBrains Mono, monospace" font-size="11" fill="#7a7870" letter-spacing="1.5">KARMA_LOOKDEV</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-type">personal — lookdev</div>
+          <div class="proj-name">Karma material study</div>
+          <div class="proj-desc">Lookdev pass exploring layered shaders and displacement under varied lighting.</div>
+          <div class="proj-meta">
+            <span>2024 · karma</span>
+            <span>→</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card" data-tag="personal">
+        <div class="proj-thumb">
+          <svg viewBox="0 0 600 375" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="375" fill="#1a1b16"/>
+            <defs>
+              <pattern id="gridE" width="30" height="30" patternUnits="userSpaceOnUse">
+                <path d="M30 0 L0 0 0 30" fill="none" stroke="#2e2e26" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="600" height="375" fill="url(#gridE)"/>
+            <g fill="none" stroke="#F2C230" stroke-width="1.2" opacity="0.8">
+              <ellipse cx="300" cy="190" rx="100" ry="60"/>
+              <ellipse cx="300" cy="190" rx="100" ry="60" transform="rotate(45 300 190)"/>
+              <ellipse cx="300" cy="190" rx="100" ry="60" transform="rotate(90 300 190)"/>
+              <ellipse cx="300" cy="190" rx="100" ry="60" transform="rotate(135 300 190)"/>
+            </g>
+            <text x="30" y="345" font-family="JetBrains Mono, monospace" font-size="11" fill="#7a7870" letter-spacing="1.5">SCAN_CAPTURE</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-type">personal — scan</div>
+          <div class="proj-name">Photogrammetry asset capture</div>
+          <div class="proj-desc">Real-world object scans cleaned up and retopologized for use as production-ready assets.</div>
+          <div class="proj-meta">
+            <span>2024 · polycam, houdini</span>
+            <span>→</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <span>plankti.dev</span>
+    <span>built with html · hosted on github pages</span>
+  </footer>
+
+  <script>
+    const pills = document.querySelectorAll('.filter-pill');
+    const cards = document.querySelectorAll('.proj-card');
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const tag = pill.dataset.tag;
+        cards.forEach(card => {
+          const tags = (card.dataset.tag || '').split(' ');
+          if (tag === 'all' || tags.includes(tag)) {
+            card.classList.remove('is-hidden');
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
