@@ -73,6 +73,12 @@ nav {
   color: var(--accent);
   font-weight: 500;
   font-size: 13px;
+  text-decoration: none;
+}
+
+.nav-logo:hover {
+  color: var(--text-bright);
+  text-decoration: none;
 }
 
 .nav-links {
@@ -446,8 +452,21 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.85rem 0;
+  padding: 0.85rem 0.75rem;
+  margin: 0 -0.75rem;
   border-bottom: 1px solid var(--border);
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.link-item:hover {
+  background: var(--bg2);
+  text-decoration: none;
+}
+
+.link-item:hover .link-arrow {
+  color: var(--accent-dim);
 }
 
 .link-item:first-child {
