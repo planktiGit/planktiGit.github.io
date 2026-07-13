@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procedural erosion system — Plankti</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">plankti.dev</span>
+    <div class="nav-links">
+      <a href="../index.html">home</a>
+      <a href="../work.html" class="active">work</a>
+      <a href="../notes.html">notes</a>
+      <a href="../downloads.html">downloads</a>
+      <a href="../links.html">links</a>
+    </div>
+  </nav>
+
+  <main style="max-width:720px">
+    <div class="breadcrumb"><a href="../work.html">work</a> / erosion-system</div>
+
+    <div class="post-meta">personal · fx / tools</div>
+    <div class="post-title">Procedural erosion system</div>
+    <div class="post-sub">2026 — houdini, vex, hdk</div>
+
+    <div class="post-body">
+      <p>A fully procedural terrain erosion solver built in VEX, simulating sediment transport across arbitrary heightfields. The system models rainfall accumulation, flow direction, and material deposition entirely on the GPU-friendly heightfield pipeline, with a custom HDA wrapping the whole thing for art-directable control.</p>
+
+      <div class="figure">
+        <svg viewBox="0 0 720 405" xmlns="http://www.w3.org/2000/svg" style="background:#1a1b16;width:100%;display:block">
+          <defs>
+            <pattern id="ge1" width="36" height="36" patternUnits="userSpaceOnUse">
+              <path d="M36 0 L0 0 0 36" fill="none" stroke="#2e2e26" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="720" height="405" fill="url(#ge1)"/>
+          <path d="M0 340 L90 290 L180 320 L270 230 L360 270 L450 170 L540 220 L630 130 L720 160 L720 405 L0 405 Z" fill="#F2C230" opacity="0.18"/>
+          <path d="M0 340 L90 290 L180 320 L270 230 L360 270 L450 170 L540 220 L630 130 L720 160" fill="none" stroke="#F2C230" stroke-width="2"/>
+          <text x="24" y="36" font-family="JetBrains Mono, monospace" font-size="13" fill="#7a7870" letter-spacing="2">HEIGHTFIELD_EROSION_v04</text>
+        </svg>
+        <div class="figure-cap">fig 1 — eroded heightfield profile after 200 simulation steps</div>
+      </div>
+
+      <h3>approach</h3>
+      <p>Erosion is computed in a solver SOP, iterating flow accumulation and sediment capacity per cell. The core math runs in VEX over the heightfield's volume primitive, while the HDA exposes rainfall rate, hardness, and deposition thresholds as simple sliders.</p>
+
+      <div class="code-block">// simplified flow accumulation step
+float h = volumeindex(0, "height", ix, iy, 0);
+float flow = 0;
+for (int dx = -1; dx &lt;= 1; dx++) {
+    for (int dy = -1; dy &lt;= 1; dy++) {
+        if (dx == 0 &amp;&amp; dy == 0) continue;
+        float nh = volumeindex(0, "height", ix+dx, iy+dy, 0);
+        if (nh &gt; h) flow += (nh - h);
+    }
+}</div>
+
+      <h3>result</h3>
+      <p>The final HDA produces convincing valley and ridge formations from arbitrary noise input, usable both for hero terrain and background set dressing.</p>
+    </div>
+
+    <div class="tags-row">
+      <span class="tag">heightfield</span>
+      <span class="tag">vex</span>
+      <span class="tag">hda</span>
+    </div>
+  </main>
+
+  <footer>
+    <span>plankti.dev</span>
+    <span>built with html · hosted on github pages</span>
+  </footer>
+
+</body>
+</html>

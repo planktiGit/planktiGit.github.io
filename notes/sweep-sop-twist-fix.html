@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fixing twist artifacts on the Sweep SOP — Plankti</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">plankti.dev</span>
+    <div class="nav-links">
+      <a href="../index.html">home</a>
+      <a href="../work.html">work</a>
+      <a href="../notes.html" class="active">notes</a>
+      <a href="../downloads.html">downloads</a>
+      <a href="../links.html">links</a>
+    </div>
+  </nav>
+
+  <main style="max-width:720px">
+    <div class="breadcrumb"><a href="../notes.html">notes</a> / sweep-sop-twist-fix</div>
+
+    <div class="post-meta">houdini · vex</div>
+    <div class="post-title">Fixing twist artifacts on the Sweep SOP</div>
+    <div class="post-sub">2026.06.10 — notes on vertex order and frame computation</div>
+
+    <div class="post-body">
+      <p>The Sweep SOP builds its cross-section frames from the curve's tangent and an up-vector estimate. When neighboring frames flip relative to each other, you get a visible twist running along the surface. The example below shows the geometry before any fix, with the cross-section rotating sharply around the middle of the curve.</p>
+
+      <div class="figure">
+        <svg viewBox="0 0 720 405" xmlns="http://www.w3.org/2000/svg" style="background:#1a1b16;width:100%;display:block">
+          <defs>
+            <pattern id="g1" width="36" height="36" patternUnits="userSpaceOnUse">
+              <path d="M36 0 L0 0 0 36" fill="none" stroke="#2e2e26" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="720" height="405" fill="url(#g1)"/>
+          <path d="M60 320 C 180 280, 220 150, 340 140 C 460 130, 500 280, 620 250" fill="none" stroke="#F2C230" stroke-width="2" opacity="0.85"/>
+          <g stroke="#F2C230" stroke-width="1" opacity="0.6">
+            <line x1="120" y1="305" x2="120" y2="335"/>
+            <line x1="220" y1="200" x2="245" y2="225"/>
+            <line x1="340" y1="140" x2="370" y2="155"/>
+            <line x1="460" y1="170" x2="430" y2="195"/>
+            <line x1="560" y1="265" x2="585" y2="240"/>
+          </g>
+          <text x="24" y="36" font-family="JetBrains Mono, monospace" font-size="13" fill="#7a7870" letter-spacing="2">SWEEP_TWIST — BEFORE</text>
+        </svg>
+        <div class="figure-cap">fig 1 — untreated frame flip around parameter t = 0.5</div>
+      </div>
+
+      <h3>why it happens</h3>
+      <p>Houdini computes each frame independently from the previous one using a rotation-minimizing approach. On curves with sharp curvature changes, floating point drift causes the up-vector to flip sign between adjacent points.</p>
+
+      <div class="code-block">// stabilize up-vector across points
+vector up = point(0, "up", @ptnum);
+vector prev_up = point(0, "up", @ptnum - 1);
+if (dot(up, prev_up) &lt; 0)
+    up *= -1;
+v@up = up;</div>
+
+      <p>Here's the same curve after re-aligning the up-vector per point so adjacent frames never flip relative to each other.</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Sweep SOP frame fix" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <h3>result</h3>
+      <p>The fix is cheap, a single dot product comparison per point, but it removes the twist entirely without needing to manually place orientation points along the curve.</p>
+    </div>
+
+    <div class="tags-row">
+      <span class="tag">sweep sop</span>
+      <span class="tag">vex</span>
+      <span class="tag">rigging</span>
+    </div>
+  </main>
+
+  <footer>
+    <span>plankti.dev</span>
+    <span>built with html · hosted on github pages</span>
+  </footer>
+
+</body>
+</html>
